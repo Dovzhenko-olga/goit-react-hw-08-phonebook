@@ -1,3 +1,4 @@
+// import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './PhoneBook.module.css';
 import { contactSelectors, contactOperations } from 'redux/contacts';
@@ -11,6 +12,8 @@ const PhoneBook = () => {
   const onDeleteContact = contactId => {
     dispatch(contactOperations.deleteContact(contactId))
   };
+
+  // useEffect(() => dispatch(contactOperations.fetchContacts()), [dispatch]);
 
   return (
     <>

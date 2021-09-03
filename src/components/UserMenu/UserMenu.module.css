@@ -1,0 +1,31 @@
+.container {
+  text-align: center;
+}
+.user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.avatar {
+  margin-right: 4px;
+  border-radius: 50%;
+}
+.name {
+  font-weight: 700;
+}
+.button {
+  padding: 3px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: rgb(216, 100, 100);
+  color: bisque;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  box-shadow: inset 0px 0px 6px 2px grey;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: rgb(240, 100, 100);
+}

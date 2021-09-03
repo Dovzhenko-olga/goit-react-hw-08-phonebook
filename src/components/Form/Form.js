@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import {contactOperations, contactSelectors } from 'redux/contacts';
+import { contactOperations, contactSelectors } from 'redux/contacts';
 import styles from './Form.module.css';
 
 
@@ -33,15 +33,12 @@ function Form({onShowModal}) {
     e.preventDefault();
     if (contacts.some(contact => contact.name === name)) {
        onShowModal(name);
-      // alert(`${name} already in contacts. Rewrite number?`);
       reset();
       return;
       }
     dispatch(contactOperations.addContact({name, number}));
     reset();
   };
-
-  useEffect(() => dispatch(contactOperations.fetchContacts()), [dispatch]);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -78,8 +75,4 @@ function Form({onShowModal}) {
     )
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: contact => dispatch(addContact(contact)),
-// })
- 
 export default Form;
