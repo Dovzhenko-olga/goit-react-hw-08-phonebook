@@ -7,6 +7,18 @@ import { authOperations, authSelectors } from 'redux/auth';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
+import { makeStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 const HomePage = lazy(() => import ('./components/HomePage'));
 const RegisterView = lazy(() => import ('components/authViews/RegisterView'));
 const LoginForm = lazy(() => import ('./components/authViews/LoginView'));
@@ -15,6 +27,7 @@ const ContactsView = lazy(() => import ('./components/ContactsView'));
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(authSelectors.getIsRefreshing);
+  const classes = useStyles();
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
@@ -28,7 +41,11 @@ export default function App() {
           <>
           <AppBar />
           <Switch>
-            <Suspense fallback={<h3>Loading...</h3>}>
+            <Suspense fallback={
+              <div className={classes.root}>
+                <LinearProgress />
+              </div>
+              }>
               {/* <Route exact path="/" component={HomePage} /> */}
               {/* <Route path="/register" component={RegisterView} /> */}
               {/* <Route path="/login" component={LoginForm} /> */}

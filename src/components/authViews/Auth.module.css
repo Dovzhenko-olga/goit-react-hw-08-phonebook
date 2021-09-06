@@ -18,7 +18,7 @@
   outline: none;
   box-shadow: 1px 1px 4px 1px gray;
 }
-.button {
+/* .button {
   width: 130px;
   padding: 3px;
   font-size: 1.4rem;
@@ -30,7 +30,7 @@
   outline: none;
   box-shadow: inset 0px 0px 6px 2px grey;
   cursor: pointer;
-}
-.button:hover {
+} */
+/* .button:hover {
   background-color: rgb(240, 100, 100);
-}
+} */

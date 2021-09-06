@@ -1,7 +1,30 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from "@material-ui/core/styles";
 import styles from './Auth.module.css';
+
+const useStyles = makeStyles(() => ({
+  button: {
+    width: "130px",
+    padding: "3px",
+    fontSize: "1.4rem",
+    fontWeight: 500,
+    backgroundColor: "rgb(216, 100, 100)",
+    color: "bisque",
+    borderRadius: "3px",
+    border: "none",
+    outline: "none",
+    boxShadow: "inset 0px 0px 6px 2px grey",
+    cursor: "pointer",
+    textTransform: "capitalize",
+    "&:hover": {
+      backgroundColor: "rgb(240, 100, 100)",
+      boxShadow: "inset 0px 0px 6px 2px grey",
+    },
+  }
+}));
 
 export default function RegisterView() {
   const [name, setName] = useState('');
@@ -34,6 +57,8 @@ export default function RegisterView() {
     dispatch(authOperations.register({ name, email, password }));
     reset();
   };
+
+  const classes = useStyles();
 
   return (
     <>
@@ -72,7 +97,12 @@ export default function RegisterView() {
         onChange={handleChange}
       />
       </label>
-      <button className={styles.button} type="submit">Register</button>
+      <Button
+          variant="contained"
+          className={classes.button}
+          type="submit">
+          Register
+      </Button>
     </form>
     </>
   )
