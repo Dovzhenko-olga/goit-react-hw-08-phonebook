@@ -1,7 +1,33 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { contactOperations, contactSelectors } from 'redux/contacts';
+import { Add } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
 import styles from './Form.module.css';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+  button: {
+    margin: 0,
+    width: "36px",
+    height: "36px",
+    color: "#ffe4c4",
+    backgroundColor: "rgb(216, 100, 100)",
+    boxShadow: "inset 0px 0px 6px 2px grey",
+    "&:hover": {
+      backgroundColor: "rgb(240, 100, 100)",
+      boxShadow: "inset 0px 0px 6px 2px grey",
+    },
+  },
+}));
 
 
 function Form({onShowModal}) {
@@ -9,6 +35,7 @@ function Form({onShowModal}) {
   const [number, setNumber] = useState('');
   const contacts = useSelector(contactSelectors.getContacts);
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -69,8 +96,16 @@ function Form({onShowModal}) {
             required
             onChange={handleChange}
           />
-        </label>
-      <button className={styles.button} type="submit">Add contact</button>
+      </label>
+      <div className={styles.addedBlock}>
+        <p className={styles.added}>Add contact</p>
+        <div className={classes.root}>
+          <Fab className={classes.button} aria-label="add">
+            <Add />
+          </Fab>
+        </div>
+      </div>
+      {/* <button className={styles.button} type="submit">Add contact</button> */}
     </form>
     )
 }

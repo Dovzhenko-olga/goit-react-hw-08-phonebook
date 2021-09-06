@@ -18,7 +18,20 @@
   outline: none;
   box-shadow: 1px 1px 4px 1px gray;
 }
-.button {
+.addedBlock {
+  display: flex;
+}
+.added {
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(216, 100, 100);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+    0px 0px 2px grey;
+}
+/* .button {
   width: 130px;
   padding: 3px;
   font-size: 1.4rem;
@@ -33,4 +46,4 @@
 }
 .button:hover {
   background-color: rgb(240, 100, 100);
-}
+} */
