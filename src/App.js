@@ -1,37 +1,56 @@
-// import { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { useEffect, Suspense, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Switch } from 'react-router-dom';
 import Container from './components/Container';
 import AppBar from './components/AppBar';
-import HomePage from './components/HomePage';
-import RegisterView from 'components/authViews/RegisterView';
-import LoginForm from './components/authViews/LoginView';
-import ContactsView from './components/ContactsView';
+import { authOperations, authSelectors } from 'redux/auth';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 
+const HomePage = lazy(() => import ('./components/HomePage'));
+const RegisterView = lazy(() => import ('components/authViews/RegisterView'));
+const LoginForm = lazy(() => import ('./components/authViews/LoginView'));
+const ContactsView = lazy(() => import ('./components/ContactsView'));
 
 export default function App() {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(authSelectors.getIsRefreshing);
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <Container>
-      <AppBar />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/register" component={RegisterView} />
-        <Route path="/login" component={LoginForm} />
-        <Route path="/contacts" component={ContactsView} />
-      </Switch>
-        {/* {showModal && <Modal onClose={toggleModal}>
-          <h1>Hello!</h1>
-          <p>This name already in contacts. Rewrite number?</p>
-          <button className={styles.modalButton} type="button" onClick={toggleModal}>Close</button>
-        </Modal>}
-        <Section title="Phonebook">
-        <Form onShowModal={toggleModal}/>
-        </Section>
-        <Section title="Contacts">
-          <Filter />
-          <PhoneBook />
-        </Section> */}
-      </Container>
-    );
+      {isRefreshing ? (
+        <h1>Preparing information.</h1>
+      ) : (
+          <>
+          <AppBar />
+          <Switch>
+            <Suspense fallback={<h3>Loading...</h3>}>
+              {/* <Route exact path="/" component={HomePage} /> */}
+              {/* <Route path="/register" component={RegisterView} /> */}
+              {/* <Route path="/login" component={LoginForm} /> */}
+              {/* <Route path="/contacts" component={ContactsView} /> */}
+
+              <PublicRoute exact path="/">
+                <HomePage />
+              </PublicRoute>
+              <PublicRoute path="/register" restricted redirectTo = "/">
+                <RegisterView />
+              </PublicRoute>
+              <PublicRoute path="/login" restricted>
+                <LoginForm />
+              </PublicRoute>
+              <PrivateRoute path="/contacts" redirectTo="/login">
+                <ContactsView />
+              </PrivateRoute>
+            </Suspense>
+          </Switch>
+            </>
+      )}
+    </Container>
+  );
 }
 

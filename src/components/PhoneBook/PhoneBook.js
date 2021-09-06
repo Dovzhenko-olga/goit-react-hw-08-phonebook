@@ -1,4 +1,4 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './PhoneBook.module.css';
 import { contactSelectors, contactOperations } from 'redux/contacts';
@@ -13,7 +13,7 @@ const PhoneBook = () => {
     dispatch(contactOperations.deleteContact(contactId))
   };
 
-  // useEffect(() => dispatch(contactOperations.fetchContacts()), [dispatch]);
+  useEffect(() => dispatch(contactOperations.fetchContacts()), [dispatch]);
 
   return (
     <>
@@ -22,7 +22,7 @@ const PhoneBook = () => {
       <ul className={styles.list}>
       {contacts.map(({ id, name, number }) => (
         <li className={styles.item} key={id}>
-          <span>{name}:</span> <span>{number}</span>
+          <span>{name}:</span> <span className={styles.number}>{number}</span>
           <button className={styles.button} onClick={() => { onDeleteContact(id) }}>Delete</button>
         </li>
       ))}

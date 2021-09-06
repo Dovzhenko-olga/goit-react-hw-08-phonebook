@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { contactOperations } from 'redux/contacts';
+import { useState } from 'react';
 import Section from '../Section';
 import Form from '../Form';
 import PhoneBook from '../PhoneBook';
@@ -10,13 +8,10 @@ import styles from 'App.module.css';
 
 export default function ContactsView() {
   const [showModal, setShowModal] = useState(false);
-  const dispatch = useDispatch();
 
   const toggleModal = () => {
     setShowModal(!showModal);
   }
-
-  useEffect(() => dispatch(contactOperations.fetchContacts()), [dispatch]);
 
   return (
     <>

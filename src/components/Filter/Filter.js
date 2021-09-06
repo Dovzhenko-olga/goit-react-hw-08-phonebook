@@ -13,7 +13,7 @@ const Filter = () => {
       <span className={styles.title}>
         Find contacts by name
       </span>
-      <input className={styles.input} type="text" value={value} onChange={onChange} />
+      <input className={styles.input} type="text" value={value} placeholder="Search" onChange={onChange} />
     </label>
   );
 };

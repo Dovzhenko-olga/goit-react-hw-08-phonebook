@@ -37,7 +37,7 @@ export default function RegisterView() {
 
   return (
     <>
-    <h2>Registration</h2>
+    <h1>Registration</h1>
     <form className={styles.form} onSubmit={handleSubmit}>
       <label>
         <p className={styles.name}>Name</p>

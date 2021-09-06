@@ -41,40 +41,33 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     console.log(error.message);
   }
 });
-/*
- * GET @ /users/current
- * headers:
- *    Authorization: Bearer token
- *
- * 1. Забираем токен из стейта через getState()
- * 2. Если токена нет, выходим не выполняя никаких операций
- * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
- */
-// const fetchCurrentUser = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
 
-//     if (persistedToken === null) {
-//       console.log('Токена нет, уходим из fetchCurrentUser');
-//       return thunkAPI.rejectWithValue();
-//     }
+const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
 
-//     token.set(persistedToken);
-//     try {
-//       const { data } = await axios.get('/users/current');
-//       return data;
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   },
-// );
+    if (persistedToken === null) {
+      console.log('No token');
+      alert('Please login or register!');
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('/users/current');
+    return data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+);
 
 const operations = {
   register,
   logOut,
   logIn,
-  // fetchCurrentUser,
+  fetchCurrentUser,
 };
 export default operations;
