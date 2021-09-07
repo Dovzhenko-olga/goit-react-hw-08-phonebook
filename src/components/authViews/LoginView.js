@@ -1,11 +1,31 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
-import styles from './Auth.module.css';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    fontSize: "1.4rem",
+  },
+    name: {
+    marginTop: 0,
+    marginBottom: "5px",
+    fontSize: "25px",
+    fontWeight: 500,
+  },
+  input: {
+    marginBottom: "10px",
+    padding: "3px",
+    width: "300px",
+    borderRadius: "4px",
+    border: "none",
+    outline: "none",
+    backgroundColor: "#fff",
+    boxShadow: "inset -1px 0px 10px 2px grey",
+  },
   button: {
     width: "130px",
     padding: "3px",
@@ -61,29 +81,36 @@ export default function LoginForm() {
   return (
     <>
     <h1>LogIn</h1>
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <label>
-        <p className={styles.name}>Email</p>
-        <input
-          type="text"
-          name="email"
-          className={styles.input}
-          value={email}
-          placeholder="Enter email"
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        <p className={styles.name}>Password</p>
-        <input
+      <form className={classes.root} onSubmit={handleSubmit}>
+      <p className={classes.name}>Email</p>
+      <TextField
+        variant="outlined"
+        type="email"
+        name="email"
+        value={email}
+        autoFocus
+        label="Enter your email"
+        className={classes.input}
+        onChange={handleChange}
+      />
+      <p className={classes.name}>Password</p>
+      <TextField
+        variant="outlined"
+        type="password"
+        name="password"
+        value={password}
+        label="Enter your password"
+        className={classes.input}
+        onChange={handleChange}
+      />
+        {/* <input
           type="password"
           name="password"
           className={styles.input}
           value={password}
           placeholder="Enter your password"
           onChange={handleChange}
-        />
-      </label>
+        /> */}
         <Button
           variant="contained"
           className={classes.button}

@@ -5,7 +5,7 @@ export default function AuthNav() {
   return (
     <div>
       <NavLink
-        to="/register"
+        to="/goit-react-hw-08-phonebook/register"
         exact
         className={styles.link}
         activeClassName={styles.activeLink}
@@ -13,7 +13,7 @@ export default function AuthNav() {
         Register
       </NavLink>
       <NavLink
-        to="/login"
+        to="/goit-react-hw-08-phonebook/login"
         exact
         className={styles.link}
         activeClassName={styles.activeLink}

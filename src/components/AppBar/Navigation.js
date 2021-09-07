@@ -8,7 +8,7 @@ const Navigation = () => {
 
   return(
   <nav>
-    <NavLink to="/"
+    <NavLink to="/goit-react-hw-08-phonebook/"
       exact
       className={styles.link}
       activeClassName={styles.activeLink}
@@ -18,7 +18,7 @@ const Navigation = () => {
 
   {isLoggedIn && (
     <NavLink
-      to="/contacts"
+      to="/goit-react-hw-08-phonebook/contacts"
       exact
       className={styles.link}
       activeClassName={styles.activeLink}

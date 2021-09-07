@@ -100,8 +100,8 @@ function Form({onShowModal}) {
       <div className={styles.addedBlock}>
         <p className={styles.added}>Add contact</p>
         <div className={classes.root}>
-          <Fab className={classes.button} aria-label="add">
-            <Add />
+          <Fab className={classes.button} type="submit" aria-label="add">
+            <Add/>
           </Fab>
         </div>
       </div>

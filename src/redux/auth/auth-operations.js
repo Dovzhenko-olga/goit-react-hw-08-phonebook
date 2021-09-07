@@ -49,7 +49,6 @@ const fetchCurrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      alert('Please login or register!');
       return thunkAPI.rejectWithValue();
     }
 
