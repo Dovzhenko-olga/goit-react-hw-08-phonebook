@@ -4,7 +4,7 @@ import { authSelectors } from "redux/auth";
 
 export default function PublicRoute({
   children,
-  redirectTo = '/contacts',
+  redirectTo = '/goit-react-hw-08-phonebook/contacts',
   restricted = false,
   ...routeProps
 }) {

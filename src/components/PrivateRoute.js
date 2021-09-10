@@ -4,7 +4,7 @@ import { authSelectors } from "redux/auth";
 
 export default function PrivateRoute({
   children,
-  redirectTo = '/',
+  redirectTo = '/goit-react-hw-08-phonebook',
   ...routeProps
 }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);

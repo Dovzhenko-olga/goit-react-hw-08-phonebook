@@ -8,7 +8,7 @@ const Navigation = () => {
 
   return(
   <nav>
-    <NavLink to="/goit-react-hw-08-phonebook/"
+    <NavLink to="/goit-react-hw-08-phonebook"
       exact
       className={styles.link}
       activeClassName={styles.activeLink}

@@ -4,6 +4,7 @@ import { contactSelectors, contactOperations } from 'redux/contacts';
 import { Button } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
 import { makeStyles } from "@material-ui/core/styles";
+import Loader from 'components/Loader';
 import styles from './PhoneBook.module.css';
 
 const useStyles = makeStyles(() => ({
@@ -41,7 +42,13 @@ const PhoneBook = () => {
 
   return (
     <>
-    {isLoading && <h2>Loading...</h2>}
+      {isLoading && (
+        <div className={styles.loader}>
+         <h2>Loading...</h2>
+         <Loader />
+        </div>
+        )
+      }
     {contacts.length > 0 && (
       <ul className={styles.list}>
       {contacts.map(({ id, name, number }) => (

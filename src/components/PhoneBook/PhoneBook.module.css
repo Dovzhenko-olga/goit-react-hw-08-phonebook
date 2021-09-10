@@ -32,3 +32,11 @@
 .button:hover {
   background-color: rgb(240, 100, 100);
 }
+.loader {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+}
+.loader h2 {
+  margin-right: 100px;
+}
