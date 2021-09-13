@@ -20,6 +20,17 @@ const useStyles = makeStyles(() => ({
     boxShadow: "inset 0px 0px 6px 2px grey",
     cursor: "pointer",
     textTransform: "capitalize",
+    "@media screen and (max-width: 480px)": {
+      minWidth: "30px",
+      padding: "5px",
+      borderRadius: "50%",
+    },
+    "& span": {
+      "@media screen and (max-width: 480px)": {
+        marginLeft: "1px",
+        marginRight: "1px",
+    },
+    },
     "&:hover": {
       backgroundColor: "rgb(240, 100, 100)",
       boxShadow: "inset 0px 0px 6px 2px grey",
@@ -61,7 +72,7 @@ const PhoneBook = () => {
             startIcon={<Delete />}
             onClick={() => { onDeleteContact(id) }}
         >
-        Delete
+        <span className={styles.hidden}>Delete</span>
         </Button>
           {/* <button className={styles.button} onClick={() => { onDeleteContact(id) }}>Delete</button> */}
         </li>

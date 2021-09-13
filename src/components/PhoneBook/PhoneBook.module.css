@@ -1,5 +1,5 @@
 .list {
-  width: 35%;
+  width: 95%;
   list-style: none;
   padding-left: 0;
   margin: 0;
@@ -39,4 +39,29 @@
 }
 .loader h2 {
   margin-right: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .list {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 }
